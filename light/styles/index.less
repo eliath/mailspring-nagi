@@ -1,0 +1,24 @@
+@import 'ui-variables';
+@import 'nagi';
+
+// Mailspring turns the open thread's text, icons, and labels white because
+// its selection is a solid fill. Ours is a pale tint, so undo that.
+.thread-list,
+.draft-list {
+  .focused,
+  &.handler-split .list-item.selected {
+    color: @nagi-fg;
+    -webkit-font-smoothing: auto;
+
+    .thread-icon,
+    .draft-icon,
+    .mail-important-icon,
+    .mail-label {
+      filter: none;
+    }
+    // Overrides an !important fill that hides the label's inline color.
+    .mail-label {
+      background: @nagi-card !important;
+    }
+  }
+}

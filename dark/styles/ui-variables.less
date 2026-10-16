@@ -1,0 +1,29 @@
+@import 'base/ui-variables';
+
+// Charcoal palette.
+@nagi-bg: #26282c;
+@nagi-card: #2d2f34;
+@nagi-muted: #323439;
+@nagi-muted-fg: #999ca3;
+@nagi-border: #35373b;
+@nagi-border-strong: #43464c;
+@nagi-fg: #e9eaec;
+@nagi-primary: #60a5fa;
+@nagi-primary-dark: #3b82f6;
+@nagi-primary-fg: #1c1e21;
+@nagi-sidebar: #212326;
+@nagi-sidebar-fg: #c9cbcf;
+@nagi-sidebar-accent: #323439;
+@nagi-selected: #2d3745; // @nagi-primary at 12% over @nagi-bg
+
+// Same inverted gray scale as Mailspring's ui-dark, so base styles that use
+// @white and @gray-* for surfaces come out dark.
+@gray-base: #ffffff;
+@gray-darker: darken(@gray-base, 13.5%);
+@gray-dark: darken(@gray-base, 20%);
+@gray: darken(@gray-base, 33.5%);
+@gray-light: darken(@gray-base, 46.7%);
+@gray-lighter: darken(@gray-base, 92.5%);
+@white: @nagi-bg;
+
+@import 'nagi-mapping';

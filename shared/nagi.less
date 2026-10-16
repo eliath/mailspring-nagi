@@ -1,0 +1,184 @@
+@import 'ui-variables';
+
+// One flat surface instead of Mailspring's gradient toolbar band.
+.sheet-toolbar {
+  border-bottom: 1px solid @nagi-border;
+  box-shadow: none;
+}
+.sheet-toolbar-container,
+body.is-blurred .sheet-toolbar-container {
+  background: @nagi-bg;
+  background-image: none;
+  box-shadow: none;
+}
+.toolbar-RootSidebar {
+  height: 100%;
+  background: @nagi-sidebar;
+}
+
+// Sidebar: rounded rows with a neutral selected fill.
+.account-sidebar .outline-view .item {
+  color: @nagi-sidebar-fg;
+  margin: 1px 8px;
+  border-radius: @border-radius-base;
+
+  img.content-mask {
+    background-color: @nagi-sidebar-fg;
+  }
+  &:hover {
+    background: @nagi-sidebar-accent;
+  }
+  &.selected {
+    color: @nagi-fg;
+    font-weight: @font-weight-medium;
+    img.content-mask {
+      background-color: @nagi-fg;
+    }
+  }
+}
+
+// The keyboard cursor bar defaults to @list-focused-bg, which is now a pale tint.
+.list-tabular .list-tabular-item.keyboard-cursor {
+  border-left-color: @nagi-primary;
+}
+
+// Thin neutral handle on no track. The default handle derives from @gray,
+// which the dark palette inverts, so it came out white.
+.scrollbar-track {
+  padding: 3px 5px;
+  background: transparent;
+  border-left: none;
+
+  .scrollbar-handle {
+    background-color: fade(@nagi-muted-fg, 45%);
+    border: none;
+  }
+  &.dragging .scrollbar-handle {
+    background-color: @nagi-muted-fg;
+    border: none;
+  }
+}
+
+// Bordered cards instead of drop shadows.
+#message-list .message-item-wrap .message-item-white-wrap {
+  border: 1px solid @nagi-border;
+  border-radius: @border-radius-large;
+  box-shadow: none;
+}
+
+.btn {
+  border-radius: @border-radius-base;
+}
+
+// Flat fills in place of Mailspring's gradients.
+
+// Labels get their color and gradient as inline styles, so this needs
+// !important. The inline background-color still applies.
+.mail-label {
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.btn.btn-emphasis {
+  background: @btn-emphasis-bg-color;
+  border-color: @btn-emphasis-bg-color;
+  &:active {
+    background: @nagi-primary-dark;
+  }
+  // Mailspring draws a second gradient layer behind the button.
+  &:before {
+    display: none;
+  }
+}
+
+.btn-toolbar {
+  background: @btn-default-bg-color;
+  &:active {
+    background: @nagi-muted;
+  }
+}
+
+// Recipient chips in the composer.
+.tokenizing-field .token {
+  background: @nagi-muted;
+  box-shadow: none;
+  &:hover:not(.invalid) {
+    background: @nagi-sidebar-accent;
+    box-shadow: none;
+  }
+  &.selected,
+  &.dragging {
+    background: @nagi-primary;
+    color: @nagi-primary-fg;
+    border: 1px solid @nagi-primary;
+    box-shadow: none;
+  }
+  &.invalid.selected,
+  &.invalid.dragging {
+    background: mix(@nagi-muted, red, 55%);
+    border: 1px solid mix(@nagi-muted, red, 55%);
+  }
+}
+
+.notifications-sticky .notification-error {
+  background: @background-color-error;
+}
+
+// Sidebar unread badge: soft fill instead of a solid text-colored block.
+.account-sidebar .outline-view .item .item-count-box.alt-count {
+  color: @nagi-fg;
+  background: fade(@nagi-muted-fg, 18%);
+}
+
+// Linux window controls: flat muted dots in place of Mailspring's bitmap
+// sprites. Glyphs are SVG masks so they take the theme color.
+@nagi-glyph-close: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M4 4l4 4M8 4l-4 4' stroke='black' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E");
+@nagi-glyph-minimize: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3.5 6h5' stroke='black' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E");
+@nagi-glyph-maximize: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Crect x='3.75' y='3.75' width='4.5' height='4.5' rx='0.75' fill='none' stroke='black' stroke-width='1.2'/%3E%3C/svg%3E");
+
+body.platform-linux .toolbar-window-controls {
+  button {
+    position: relative;
+    width: 13px;
+    height: 13px;
+    margin: 5px 4px;
+    border-radius: 50%;
+    // The sprites come from several rules, up to .alt-true .maximize.
+    background-image: none !important;
+    background-color: fade(@nagi-muted-fg, 40%);
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: @nagi-fg;
+      -webkit-mask-size: 13px 13px;
+      opacity: 0;
+    }
+    &:active {
+      filter: brightness(0.85);
+    }
+  }
+  .close::after {
+    -webkit-mask-image: @nagi-glyph-close;
+  }
+  .minimize::after {
+    -webkit-mask-image: @nagi-glyph-minimize;
+  }
+  .maximize::after {
+    -webkit-mask-image: @nagi-glyph-maximize;
+  }
+  &:hover button::after {
+    opacity: 0.7;
+  }
+  button.close:hover {
+    background-color: #ef4444;
+    &::after {
+      background-color: #fff;
+      opacity: 1;
+    }
+  }
+}
+
+body.platform-linux.is-blurred .toolbar-window-controls button {
+  opacity: 0.5;
+}

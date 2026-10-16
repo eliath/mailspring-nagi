@@ -1,0 +1,63 @@
+// Maps the @nagi-* palette from each variant's ui-variables.less onto
+// Mailspring's variables. Keep palette values as hex: Mailspring runs LESS
+// color functions (darken, lighten, fadeout) on many of these.
+
+// Fixed blue instead of var(--system-accent) so the OS tint can't override it.
+@accent-primary: @nagi-primary;
+@accent-primary-dark: @nagi-primary-dark;
+@component-active-color: @nagi-primary;
+@component-active-bg: @nagi-card;
+
+@background-primary: @nagi-card;
+@background-off-primary: @nagi-bg;
+@background-secondary: @nagi-bg;
+
+@border-color-primary: @nagi-border-strong;
+@border-color-secondary: @nagi-border;
+@border-color-divider: @nagi-border;
+
+@text-color: @nagi-fg;
+@text-color-heading: @nagi-fg;
+@text-color-link: @nagi-primary;
+@text-color-link-hover: @nagi-primary-dark;
+@text-color-link-active: @nagi-primary-dark;
+
+// Inter is the fallback when Geist isn't installed.
+@font-family-sans-serif: 'Geist', 'Inter Variable', 'Inter', system-ui, sans-serif;
+
+@border-radius-small: 4px;
+@border-radius-base: 6px;
+@border-radius-large: 8px;
+@component-border-radius: 6px;
+
+@btn-default-bg-color: @nagi-card;
+@btn-border-color: @nagi-border-strong;
+@btn-icon-color: @nagi-muted-fg;
+@btn-emphasis-bg-color: @nagi-primary;
+@btn-emphasis-text-color: @nagi-primary-fg;
+
+@dropdown-default-bg-color: @nagi-card;
+@dropdown-default-border-color: @nagi-border-strong;
+
+@input-bg: @nagi-card;
+@input-border-color: @nagi-border-strong;
+
+@toolbar-background-color: @nagi-bg;
+@panel-background-color: @nagi-sidebar;
+@source-list-active-bg: @nagi-sidebar-accent;
+@source-list-active-color: @nagi-fg;
+
+// Mark the open thread with a light tint, not a solid fill.
+@list-bg: @nagi-bg;
+@list-border: @nagi-border;
+@list-hover-bg: @nagi-muted;
+@list-focused-bg: @nagi-selected;
+@list-focused-color: @nagi-fg;
+@list-focused-border: @nagi-border;
+@list-selected-bg: @nagi-selected;
+@list-selected-color: @nagi-fg;
+@list-selected-border: @nagi-border;
+
+@menu-item-color-hover: @nagi-muted;
+@menu-item-color-selected: @nagi-primary;
+@menu-text-color-selected: @nagi-primary-fg;
