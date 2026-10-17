@@ -27,3 +27,13 @@ img.content-light {
   background: #312856;
   border-bottom: 1px solid #4d3b8a;
 }
+
+// In split mode Mailspring gives selected rows @text-color-inverse, which is
+// @nagi-bg here. Its icon and label filters already turn them light.
+.thread-list,
+.draft-list {
+  &.handler-split .list-item.selected {
+    color: @nagi-fg;
+    -webkit-font-smoothing: auto;
+  }
+}
